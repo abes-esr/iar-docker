@@ -1,2 +1,8 @@
 .env*
 !.env-dist
+volumes/csv/**
+!volumes/csv/.gitkeep
+volumes/pkl/**
+!volumes/pkl/.gitkeep
+volumes/qdrant/storage/**
+!volumes/qdrant/storage/.gitkeep
