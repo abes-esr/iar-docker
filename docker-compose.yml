@@ -20,7 +20,7 @@ services:
     environment:   
       SPRING_PROFILES_ACTIVE: ${IAR_SPRING_PROFILES_ACTIVE}
     volumes: 
-     - ${IAR_DATA_DIR}:./volumes      
+     - ./volumes:${IAR_DATA_DIR}      
     labels:
       # pour envoyer les logs dans le puits de log de l'abes
       - "co.elastic.logs/enabled=true"
@@ -50,7 +50,7 @@ services:
     ports:
       - ${IAR_VECTORISATION_PORT}:80
     volumes: 
-     - ${IAR_DATA_DIR}:./volumes
+     - ./volumes:${IAR_DATA_DIR}
     labels:
       # pour envoyer les logs dans le puits de log de l'abes
       - "co.elastic.logs/enabled=true"
@@ -62,7 +62,7 @@ services:
       - "wud.watch.digest=true"
 
   iar-qdrant:
-    image: qdrant/qdrant:latest
+    image: qdrant/qdrant:${IAR_QDRANT_VERSION}
     restart: unless-stopped
     container_name: iar-qdrant
     ports:
@@ -71,7 +71,7 @@ services:
       - source: qdrant_config
         target: /qdrant/config/production.yaml
     volumes:
-      - ./qdrant_data:./volumes/qdrant/storage
+      - ./volumes/qdrant/storage:/qdrant/storage
 
   iar-api:
     image: abesesr/iar:${IAR_API_VERSION}
