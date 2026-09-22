@@ -63,8 +63,10 @@ services:
       IAR_DOCKER_NETWORK: ${IAR_DOCKER_NETWORK}
       IAR_DOCKER_IMAGE_BATCH: ${IAR_DOCKER_IMAGE_BATCH}
       IAR_DOCKER_SOCK: ${IAR_DOCKER_SOCK}
-
+      IAR_DOCKER_BATCH_USER : ${IAR_DOCKER_BATCH_USER}
+      
       ENABLE_GPU: ${ENABLE_GPU}
+      
 
     user: root
     ports:
