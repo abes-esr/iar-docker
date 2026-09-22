@@ -40,9 +40,6 @@ services:
     memswap_limit: ${MEM_LIMIT}
     cpus: ${CPU_LIMIT}
     environment:
-     # TODO verif llm necessaire ou non pour  la vectorisation 
-      IAR_API_LLM_URL : ${IAR_LLM_URL}
-      IAR_API_LLM_KEY: ${IAR_LLM_KEY}
       IAR_API_LLM_MODEL: ${IAR_LLM_MODEL}
       IAR_QDRANT_HOST: ${IAR_QDRANT_HOST}
       IAR_QDRANT_PORT: ${IAR_QDRANT_PORT}
