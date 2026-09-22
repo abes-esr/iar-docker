@@ -20,7 +20,7 @@ services:
     environment:   
       SPRING_PROFILES_ACTIVE: ${IAR_SPRING_PROFILES_ACTIVE}
     volumes: 
-     - ${IAR_DATA_DIR}:./volumes 
+      - ./volumes:${IAR_DATA_DIR}
     networks :
       -  ${IAR_DOCKER_NETWORK}     
     labels:
@@ -70,7 +70,7 @@ services:
     ports:
       - ${IAR_VECTORISATION_PORT}:80
     volumes: 
-      - ${IAR_DATA_DIR}:./volumes
+      - ./volumes:${IAR_DATA_DIR}
       - /var/run/docker.sock:/var/run/docker.sock
     networks :
       -  ${IAR_DOCKER_NETWORK}
@@ -94,7 +94,7 @@ services:
       - source: qdrant_config
         target: /qdrant/config/production.yaml
     volumes:
-      - ./qdrant_data:./volumes/qdrant/storage
+      - ./volumes/qdrant/storage:/qdrant/storage
     networks :
       -  ${IAR_DOCKER_NETWORK}
 
