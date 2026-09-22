@@ -68,7 +68,7 @@ services:
 
     user: root
     ports:
-      - ${IAR_VECTORISATION_PORT}:80
+      - ${IAR_VECTORISATION_PORT}:${IAR_VECTORISATION_PORT}
     volumes: 
       - ./volumes:${IAR_DATA_DIR}
       - /var/run/docker.sock:/var/run/docker.sock
