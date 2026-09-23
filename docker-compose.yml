@@ -107,6 +107,26 @@ services:
       - ./volumes/qdrant/storage:/qdrant/storage
     networks :
       -  ${IAR_DOCKER_NETWORK}
+  iar-llm:
+    image: ollama/ollama:latest
+    container_name: iar-llm
+    restart: unless-stopped
+    mem_limit: ${MEM_LIMIT}
+    memswap_limit: ${MEM_LIMIT}
+    cpus: ${CPU_LIMIT}
+    ports:
+      - ${IAR_LLM_PORT}:11434
+    volumes:
+      - ./volumes/ollama:/root/.ollama
+    networks:
+      -  ${IAR_DOCKER_NETWORK}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
 
   iar-api:
     image: abesesr/iar:${IAR_API_VERSION}
