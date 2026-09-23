@@ -85,8 +85,8 @@ services:
       IAR_DOCKER_BATCH_USER : ${IAR_DOCKER_BATCH_USER}
       
       ENABLE_GPU: ${ENABLE_GPU}
-      
-
+    depends_on:
+      - iar-qdrant
     user: root
     ports:
       - ${IAR_VECTORISATION_PORT}:${IAR_VECTORISATION_PORT}
@@ -152,10 +152,23 @@ services:
       IAR_API_LLM_MODEL: ${IAR_LLM_MODEL}
       IAR_QDRANT_HOST: ${IAR_QDRANT_HOST}
       IAR_QDRANT_PORT: ${IAR_QDRANT_PORT}
+      IAR_API_HTTP_HOST: ${IAR_API_HTTP_HOST}
+      IAR_API_HTTP_PORT: ${IAR_API_HTTP_PORT}
+      IAR_CORS_ORIGINS: ${IAR_CORS_ORIGINS}
     ports:
       - ${IAR_API_HTTP_PORT}:${IAR_API_HTTP_PORT}
-    #depends_on:
-      #- licencesnationales-web
+    volumes:
+      - ./volumes:${IAR_DATA_DIR}
+    depends_on:
+      - iar-llm
+      - iar-qdrant
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
     networks :
       -  ${IAR_DOCKER_NETWORK}
     labels:
