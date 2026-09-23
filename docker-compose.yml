@@ -19,6 +19,7 @@ services:
     cpus: ${CPU_LIMIT}
     environment:   
       SPRING_PROFILES_ACTIVE: ${IAR_SPRING_PROFILES_ACTIVE}
+      JAVA_TOOL_OPTIONS: "-Djava.net.preferIPv4Stack=true"
     volumes: 
       - ./volumes:${IAR_DATA_DIR}
     networks :
