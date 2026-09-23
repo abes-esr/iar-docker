@@ -158,7 +158,7 @@ services:
     ports:
       - ${IAR_API_HTTP_PORT}:${IAR_API_HTTP_PORT}
     volumes:
-      - ./volumes:${IAR_DATA_DIR}
+      - ./volumes:${IAR_DATA_DIR}:z
     depends_on:
       - iar-llm
       - iar-qdrant
