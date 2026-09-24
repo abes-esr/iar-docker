@@ -6,3 +6,7 @@ volumes/pkl/**
 !volumes/pkl/.gitkeep
 volumes/qdrant/storage/**
 !volumes/qdrant/storage/.gitkeep
+volumes/responses/**
+!volumes/responses/.gitkeep
+volumes/history/**
+!volumes/history/.gitkeep
