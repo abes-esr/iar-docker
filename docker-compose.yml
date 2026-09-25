@@ -10,55 +10,6 @@
 services:
 
 
-  iar-batch-dump:
-    image: abesesr/iar:${IAR_BATCH_DUMP_VERSION}
-    container_name: iar-batch-dump
-    restart: unless-stopped
-    mem_limit: ${MEM_LIMIT}
-    memswap_limit: ${MEM_LIMIT}
-    cpus: ${CPU_LIMIT}
-    environment:   
-      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
-      JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS}
-      IAR_BATCH_AT_STARTUP: ${IAR_BATCH_AT_STARTUP}
-
-      IAR_BATCH_OUTPUT_DIR: ${IAR_BATCH_OUTPUT_DIR}
-      IAR_BATCH_OUTPUT_FILENAME: ${IAR_BATCH_OUTPUT_FILENAME}
-      IAR_BATCH_VECTORIZATION_URL: ${IAR_BATCH_VECTORIZATION_URL}
-      IAR_BATCH_CHUNK_SIZE: ${IAR_BATCH_CHUNK_SIZE}
-      IAR_BATCH_SOURCE_TABLE: ${IAR_BATCH_SOURCE_TABLE}
-
-      IAR_ORACLE_HOST: ${IAR_ORACLE_HOST}
-      IAR_ORACLE_PORT: ${IAR_ORACLE_PORT}
-      IAR_ORACLE_SERVICE: ${IAR_ORACLE_SERVICE}
-      IAR_ORACLE_USER: ${IAR_ORACLE_USER}
-      IAR_ORACLE_PASSWORD: ${IAR_ORACLE_PASSWORD}
-
-      IAR_BATCH_TEST_OUTPUT_DIR: ${IAR_BATCH_TEST_OUTPUT_DIR}
-      IAR_BATCH_TEST_PROCEDURE_FILENAME: ${IAR_BATCH_TEST_PROCEDURE_FILENAME}
-      IAR_BATCH_TEST_REQUETE_FILENAME: ${IAR_BATCH_TEST_REQUETE_FILENAME}
-      IAR_BATCH_TEST_SOURCE_TABLE: ${IAR_BATCH_TEST_SOURCE_TABLE}
-      IAR_BATCH_TEST_CHUNK_SIZE: ${IAR_BATCH_TEST_CHUNK_SIZE}
-
-      IAR_ORACLE_TEST_HOST: ${IAR_ORACLE_TEST_HOST}
-      IAR_ORACLE_TEST_PORT: ${IAR_ORACLE_TEST_PORT}
-      IAR_ORACLE_TEST_SERVICE: ${IAR_ORACLE_TEST_SERVICE}
-      IAR_ORACLE_TEST_USER: ${IAR_ORACLE_TEST_USER}
-      IAR_ORACLE_TEST_PASSWORD: ${IAR_ORACLE_TEST_PASSWORD}
-    volumes: 
-      - ./volumes:/app/data
-    networks :
-      -  ${IAR_DOCKER_NETWORK}     
-    labels:
-      # pour envoyer les logs dans le puits de log de l'abes
-      - "co.elastic.logs/enabled=true"
-      - "co.elastic.logs/processors.add_fields.target="
-      - "co.elastic.logs/processors.add_fields.fields.abes_appli=iar"
-      - "co.elastic.logs/processors.add_fields.fields.abes_middleware=java-spring"
-      # pour que les mises à jour de cette image soient auto-déployées par wud
-      - "wud.watch=true"
-      - "wud.watch.digest=true"
-
 
   iar-vectorisation:
     image: abesesr/iar:${IAR_VECTORISATION_VERSION}

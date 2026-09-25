@@ -131,7 +131,7 @@ labels:
   - "wud.watch.digest=true"
 ```
 
-Le fonctionnement de WUD consiste à surveiller régulièrement la publication de nouvelles versions d'images sur Docker Hub pour `iar-batch-dump`, `iar-vectorisation` et `iar-api`. Lorsqu'une nouvelle image est détectée pour le tag ou le digest suivi, WUD la télécharge, arrête l'ancien conteneur et recrée le nouveau conteneur avec les mêmes paramètres d'environnement.
+Le fonctionnement de WUD consiste à surveiller régulièrement la publication de nouvelles versions d'images sur Docker Hub pour `iar-vectorisation` et `iar-api`. Lorsqu'une nouvelle image est détectée pour le tag ou le digest suivi, WUD la télécharge, arrête l'ancien conteneur et recrée le nouveau conteneur avec les mêmes paramètres d'environnement.
 
 Pour le développeur, il suffit de pousser son code (ex: sur `develop`), d'attendre la complétion de la GitHub Action qui compile et publie l'image sur Docker Hub, puis WUD met à jour le service automatiquement.
 
@@ -150,10 +150,10 @@ Le `pull` téléchargera la dernière image disponible correspondant aux version
 
 L'application iar est composée de 4 services orchestrés par Docker Compose :
 
-- **iar-batch-dump** : Application Java Spring Boot chargée de l'extraction et du traitement batch des données RAMEAU.
 - **iar-vectorisation** : Microservice FastAPI responsable de la vectorisation (embeddings) des données et de leur insertion dans Qdrant.
 - **iar-qdrant** : Base de données vectorielle Qdrant hébergeant les collections d'embeddings pour la recherche sémantique.
-- **iar-api** : API FastAPI exposant les endpoints de consultation/recherche, s'appuyant sur Qdrant et le service LLM distant.
+- **iar-llm** : Service LLM Ollama hébergeant le modèle local pour les besoins d'inférence.
+- **iar-api** : API FastAPI exposant les endpoints de consultation/recherche, s'appuyant sur Qdrant et le service LLM.
 
 ### Dépôts sources et images Docker
 
@@ -161,6 +161,5 @@ Les images Docker de iar sont issues des dépôts GitHub de l'organisation [abes
 
 - [abes-esr/iar-api](https://github.com/abes-esr/iar-api) : Code source de l'API FastAPI
 - [abes-esr/iar-vectorisation](https://github.com/abes-esr/iar-vectorisation) : Code source du service de vectorisation
-- [abes-esr/iar-batch-dump](https://github.com/abes-esr/iar-batch-dump) : Code source du batch Java Spring Boot
 - [abes-esr/iar-docker](https://github.com/abes-esr/iar-docker) : Configuration Docker Compose de déploiement
 - Images publiées sur Docker Hub : [abesesr/iar](https://hub.docker.com/r/abesesr/iar)
