@@ -1,8 +1,6 @@
 # 🐳 iar-docker : Orchestration & Fiche d'Exploitation de la Plateforme IAR
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/abesesr/iar.svg)](https://hub.docker.com/r/abesesr/iar/)
-[![Plateforme IAR](<https://img.shields.io/badge/Projet-IAR%20(Indexation%20Automatique%20RAMEAU)-blue>)](https://github.com/abes-esr/iar-api)
-[![Docker Compose](https://img.shields.io/badge/docker--compose-v2-blue?logo=docker)](./docker-compose.yml)
 
 Configuration Docker Compose et **fiche d'exploitation standard** de la plateforme **IAR** (**I**ndexation **A**utomatique **R**AMEAU) conçue et maintenue par l'**ABES** (Agence Bibliographique de l'Enseignement Supérieur). Ce document est conforme à la [politique informatique de l'ABES](https://politique-informatique.abes.fr/docs/dev/documentation/#documentation-administrateur--fiche-dexploitation).
 
