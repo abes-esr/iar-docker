@@ -10,3 +10,5 @@ volumes/responses/**
 !volumes/responses/.gitkeep
 volumes/history/**
 !volumes/history/.gitkeep
+volumes/ollama/**
+!volumes/ollama/.gitkeep
